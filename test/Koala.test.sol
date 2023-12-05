@@ -24,7 +24,16 @@ contract KoalaTest is Test{
     function testPurchaseNFT() public{
         address purchaser = address(0x1);
         vm.startPrank(purchaser);
+        vm.expectRevert();
         koala.safeMint(purchaser);
         vm.stopPrank();
+    }
+
+    function testNFTBuyToken() public{
+        address purchaser = address(0x2);
+        vm.prank(purchaser); // this will use the prank only for the next call so no need to vm.stopPrank() after
+        koala.buyToken();
+
+        assertEq(koala.ownerOf(0),purchaser);
     }
 }
