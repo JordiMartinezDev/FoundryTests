@@ -15,4 +15,16 @@ contract KoalaTest is Test{
     function testNameIsKoala() public{
         assertEq(koala.name(), "Koala");
     }
+    
+    function testMintingNFTs() public{
+        koala.safeMint(msg.sender);
+        assertEq(koala.ownerOf(0),msg.sender);
+    }
+
+    function testPurchaseNFT() public{
+        address purchaser = address(0x1);
+        vm.startPrank(purchaser);
+        koala.safeMint(purchaser);
+        vm.stopPrank();
+    }
 }
