@@ -12,5 +12,7 @@ contract KoalaTest is Test{
         koala = new Koala();
     }
 
-    
+    function testNameIsKoala() public{
+        assertEq(koala.name(), "Koala");
+    }
 }
