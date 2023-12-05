@@ -12,6 +12,7 @@ contract Koala is ERC721, Ownable {
     
     uint256 private _nextTokenId;
     uint256 tokenCounter;
+    uint256 testUint2;
 
     constructor()
         ERC721("Koala", "KLA")
